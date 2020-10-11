@@ -6,7 +6,7 @@ import { AllRoles } from '../utils/constants';
 const DashboardRouting = () => {
   return (
     <>
-      <Route path="/dashboard" exact component={MainBoard} />
+      <Route path="/" exact component={MainBoard} />
     </>
   );
 };

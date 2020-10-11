@@ -8,6 +8,8 @@ import {
   faCaretDown,
   faSignOutAlt,
   faAngleRight,
+  faPlus,
+  faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
@@ -41,16 +43,35 @@ class Dashboard extends Component {
     return (
       <div className="grid-container">
         <div className="top-nav-container-responsive">
-          <div
+          {/* <div
             className="menu-icon pt-4"
             onClick={() => this.setState({ showSideBar: true })}
           >
             <FontAwesomeIcon icon={faBars} size="2x" color="#3cb3e0" />
+          </div> */}
+          <div className="new-logo-container">
+            <span className="new-logo">Logo Here</span>
+          </div>
+          <div className="new-menu-container">
+            <div className="new-menu-item">
+              <span className="new-menu-text">Messages</span>
+            </div>
+            <div className="new-menu-item">
+              <span className="new-menu-text">Automation</span>
+            </div>
+            <div className="new-menu-item new-menu-item-active">
+              <span className="new-menu-text new-menu-text-active">
+                Contacts
+              </span>
+            </div>
+            <div className="new-menu-item">
+              <span className="new-menu-text">Media Library</span>
+            </div>
           </div>
 
           <header className="header header-responsive">
             <div className="header__element br-right pr-3">
-              {/* <FontAwesomeIcon icon={faBell} size="2x" color="#42495b" /> */}
+              <FontAwesomeIcon icon={faBell} size="lg" color="#42495b" />
             </div>
             <div className="header__element">
               <Menu mode="horizontal" className="home-menu">
@@ -100,126 +121,80 @@ class Dashboard extends Component {
             <FontAwesomeIcon icon={faTimes} size="sm" color="#3CC6BC" />
           </div>
           <div className="sidenav-container">
-            <div className="dashboard-logo-container pl-4">
-              {/* <img
-                src={require('../assets/main-logo.png')}
-                className="dashboard-logo show-cursor mb-5"
-                alt="Church Service"
-                onClick={() => this.props.history.push('/')}
-              /> */}
+            <div className="dashboard-logo-container mb-4 sidenav-padding">
+              <div>
+                <span className="sidenav-title">Lists</span>
+              </div>
+              <div className="plus-icon-container">
+                <span className="plus-icon">+</span>
+              </div>
             </div>
-            <ul className="sidenav__list">
-              {/* Beginnig*/}
-              {authedUser.type === AllRoles.admin &&
-                AllRoutes.map(
-                  ({ activeRoute, icon, label, goTo, children }) => (
-                    <li className="sidenav__list-item" key={activeRoute}>
-                      <NavLink
-                        to={!children && goTo}
-                        className="secondary-color"
-                      >
-                        <div
-                          className={
-                            this.state.activeRoute === activeRoute
-                              ? 'activeRoute'
-                              : 'sidebar-content'
-                          }
-                          onClick={() => {
-                            !children &&
-                              this.setState({
-                                activeRoute,
-                                showSideBar: false,
-                              });
-                            children &&
-                              this.setState({
-                                showChildren: !showChildren,
-                              });
-                          }}
-                        >
-                          <FontAwesomeIcon
-                            icon={icon}
-                            size="2x"
-                            color="#42495b"
-                            className={
-                              this.state.activeRoute === activeRoute
-                                ? 'activeColor'
-                                : 'sidebar-content-icon'
-                            }
-                          />
-                          <span className="h6 mx-3">{label}</span>
-                          {children && (
-                            <FontAwesomeIcon
-                              icon={faAngleRight}
-                              size="1x"
-                              color="#42495b"
-                              className={`children-carret ${
-                                this.state.activeRoute === activeRoute
-                                  ? 'activeColor'
-                                  : 'sidebar-content-icon'
-                              }
-                              ${
-                                showChildren
-                                  ? 'show-children-carret'
-                                  : 'hide-children-carret'
-                              }
-                              `}
-                            />
-                          )}
-                        </div>
-                      </NavLink>
-                      {children && (
-                        <ul
-                          className={`sidenav__list pl-5 sidenav-list-children ${
-                            showChildren
-                              ? 'show-sidenav-list-children'
-                              : 'hide-sidenav-list-children'
-                          }`}
-                        >
-                          {children.map(
-                            ({ activeRoute, icon, label, goTo }) => (
-                              <li
-                                className="sidenav__list-item"
-                                key={activeRoute}
-                              >
-                                <NavLink to={goTo} className="secondary-color">
-                                  <div
-                                    className={
-                                      this.state.activeRoute === activeRoute
-                                        ? 'activeRoute'
-                                        : 'sidebar-content'
-                                    }
-                                    onClick={() =>
-                                      this.setState({
-                                        activeRoute,
-                                        showSideBar: false,
-                                      })
-                                    }
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={icon}
-                                      size="2x"
-                                      color="#42495b"
-                                      className={
-                                        this.state.activeRoute === activeRoute
-                                          ? 'activeColor'
-                                          : 'sidebar-content-icon'
-                                      }
-                                    />
-                                    <span className="h6 ml-3">{label}</span>
-                                  </div>
-                                </NavLink>
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      )}
-                    </li>
-                  )
-                )}
-              {/* End */}
-            </ul>
-            <div className="dashboard-logout-container br-top pt-4">
-              <div
+
+            {/* <ul className="sidenav__list"></ul> */}
+            <div className="sidenav-list">
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">All Contacts</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">
+                    10 000 contacts
+                  </span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">
+                    A Long List Name Line Special for you
+                  </span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">List</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2 sidenav-item-container-active">
+                <div>
+                  <span className="sidenav-item-title">List</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">List</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">List</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+              <div className="sidenav-item-container px-4 py-2">
+                <div>
+                  <span className="sidenav-item-title">List</span>
+                </div>
+                <div>
+                  <span className="sidenav-item-description">250 contacts</span>
+                </div>
+              </div>
+            </div>
+            {/* <div className="dashboard-logout-container br-top pt-4">
+               <div
                 className="sidebar-content show-cursor"
                 onClick={this.handleLogoutUser}
               >
@@ -230,8 +205,8 @@ class Dashboard extends Component {
                   className="sidebar-content-icon logout-icon"
                 />
                 <span className="h6 ml-3">Logout</span>
-              </div>
-            </div>
+              </div> 
+            </div> */}
           </div>
         </aside>
 
@@ -241,7 +216,7 @@ class Dashboard extends Component {
 
         <footer className="footer dashboard-footer">
           <div className="footer__signature">
-            <span className="h6 secondary-color">
+            <span className="h6">
               COPYRIGHT {new Date().getFullYear()}{' '}
             </span>
           </div>
@@ -254,7 +229,7 @@ class Dashboard extends Component {
 const mapStateToProps = ({ authedUser }) => {
   return {
     //   TODO: Remove this
-    authedUser: { stdFname: 'Test', stdLname: 'App', type: 'admin' },
+    authedUser: { stdFname: 'Lucinda', stdLname: 'Henry', type: 'admin' },
   };
 };
 
